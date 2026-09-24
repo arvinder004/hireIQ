@@ -34,7 +34,7 @@ class InterviewSession(BaseModel):
     Complete state of one interview. Stored in Redis while active, moved to MongoDB on completion.
     """
     session_id: str
-    stage: InterviewStage.INFO_GATHERING
+    stage: InterviewStage = InterviewStage.INFO_GATHERING
     candidate_data: CandidateData = Field(default_factory=CandidateData)
     current_field: str = "name"
     current_question: str | None = None
