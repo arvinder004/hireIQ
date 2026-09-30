@@ -1,5 +1,6 @@
 # HireIQ
 
+**Live Demo:** [https://hireiq-mauve.vercel.app/](https://hireiq-mauve.vercel.app/)
 An enterprise-grade AI hiring assistant that conducts structured candidate screening interviews, evaluates technical answers, and gives HR teams a dashboard to review results — all self-hosted, no third-party platforms.
 
 ---
