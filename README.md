@@ -1,7 +1,7 @@
 # HireIQ
 
 **Live Demo:** [https://hireiq-mauve.vercel.app/](https://hireiq-mauve.vercel.app/)
-An enterprise-grade AI hiring assistant that conducts structured candidate screening interviews, evaluates technical answers, and gives HR teams a dashboard to review results — all self-hosted, no third-party platforms.
+An AI hiring assistant that conducts structured candidate screening interviews, evaluates technical answers, and gives HR teams a dashboard to review results.
 
 ---
 
@@ -21,7 +21,7 @@ HR teams log into a private dashboard to browse completed interviews, view score
 
 | Layer | Technology |
 |---|---|
-| LLM | Google Gemini (`gemini-2.0-flash` / `gemini-1.5-pro`) |
+| LLM | Groq (Primary) / Google Gemini (Fallback) |
 | Backend | Python · FastAPI · Uvicorn |
 | Frontend | React · Vite · TypeScript |
 | Session store | Redis |
@@ -110,7 +110,7 @@ cd backend && railway up
 cd frontend && vercel --prod
 ```
 
-CI/CD via GitHub Actions automatically deploys on every push to `main`. See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+CI/CD via GitHub Actions automatically runs tests and deploys on every push to `main`. See [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
 
 ---
 
@@ -118,7 +118,7 @@ CI/CD via GitHub Actions automatically deploys on every push to `main`. See [`.g
 
 * **Structured Logging**: Uses `structlog` to emit JSON-formatted logs with automatic timestamps and tracebacks, ideal for ingestion by modern log aggregators.
 * **Prometheus Metrics**: The FastAPI backend is instrumented with `prometheus-fastapi-instrumentator`, exposing a `/metrics` endpoint out-of-the-box for Prometheus scraping.
-* **Health Check**: A robust `/health` endpoint is available for container liveness and readiness probes.
+* **Health Check**: A `/health` endpoint is available for container liveness probes.
 * **Automated Tests**: A `pytest` suite covers core logic, including testing the primary Groq LLM integration and ensuring reliable fallback to Gemini during simulated outages. Run tests locally via `cd backend && pytest tests/`.
 
 ---
