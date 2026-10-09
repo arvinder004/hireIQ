@@ -60,17 +60,17 @@ async def _generate_text_groq(prompt: str, system: str | None = None) -> str:
     return response.choices[0].message.content.strip()
 
 async def generate_text(prompt: str, system: str | None = None) -> str:
-    """Primary text generation. Tries Gemini, falls back to Groq on failure."""
-    if settings.gemini_api_key:
+    """Primary text generation. Tries Groq, falls back to Gemini on failure."""
+    if settings.groq_api_key:
         try:
-            return await _generate_text_gemini(prompt, system)
+            return await _generate_text_groq(prompt, system)
         except Exception as e:
-            if settings.groq_api_key:
-                log.warning(f"Gemini generation failed ({e}), falling back to Groq.")
-                return await _generate_text_groq(prompt, system)
+            if settings.gemini_api_key:
+                log.warning(f"Groq generation failed ({e}), falling back to Gemini.")
+                return await _generate_text_gemini(prompt, system)
             raise e
-    elif settings.groq_api_key:
-        return await _generate_text_groq(prompt, system)
+    elif settings.gemini_api_key:
+        return await _generate_text_gemini(prompt, system)
     else:
         raise ValueError("No LLM API keys configured (set GEMINI_API_KEY or GROQ_API_KEY).")
 

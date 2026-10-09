@@ -114,6 +114,15 @@ CI/CD via GitHub Actions automatically deploys on every push to `main`. See [`.g
 
 ---
 
+## Observability & Testing
+
+* **Structured Logging**: Uses `structlog` to emit JSON-formatted logs with automatic timestamps and tracebacks, ideal for ingestion by modern log aggregators.
+* **Prometheus Metrics**: The FastAPI backend is instrumented with `prometheus-fastapi-instrumentator`, exposing a `/metrics` endpoint out-of-the-box for Prometheus scraping.
+* **Health Check**: A robust `/health` endpoint is available for container liveness and readiness probes.
+* **Automated Tests**: A `pytest` suite covers core logic, including testing the primary Groq LLM integration and ensuring reliable fallback to Gemini during simulated outages. Run tests locally via `cd backend && pytest tests/`.
+
+---
+
 ## Build guide
 
 The full step-by-step guide — covering every file, concept, and decision — is in [`BUILD_GUIDE.md`](BUILD_GUIDE.md).
