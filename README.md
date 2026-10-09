@@ -68,14 +68,14 @@ hireiq/
 
 ## Quick start (local)
 
-**Prerequisites:** Docker Desktop, a Gemini API key, MongoDB Atlas URI
+**Prerequisites:** Docker Desktop, Groq & Gemini API keys, MongoDB Atlas URI
 
 ```bash
 git clone https://github.com/arvinder004/hireIQ.git
 cd hireIQ
 
 cp .env.example .env
-# Fill in GEMINI_API_KEY, MONGO_URI, JWT_SECRET_KEY
+# Fill in GROQ_API_KEY, GEMINI_API_KEY, MONGO_URI, JWT_SECRET_KEY
 
 docker compose up --build
 ```
@@ -91,6 +91,7 @@ docker compose up --build
 ## Environment variables
 
 ```bash
+GROQ_API_KEY        # https://console.groq.com/keys
 GEMINI_API_KEY      # https://aistudio.google.com/app/apikey
 MONGO_URI           # MongoDB Atlas connection string
 REDIS_URL           # redis://localhost:6379
