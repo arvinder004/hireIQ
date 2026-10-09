@@ -29,7 +29,7 @@ HR teams log into a private dashboard to browse completed interviews, view score
 | Auth | JWT (python-jose · bcrypt) |
 | Streaming | Server-Sent Events (SSE) |
 | Containers | Docker · docker-compose |
-| Backend hosting | Railway |
+| Backend hosting | Render |
 | Frontend hosting | Vercel |
 | CI/CD | GitHub Actions |
 
@@ -103,8 +103,8 @@ FRONTEND_URL        # http://localhost:5173 (or Vercel URL in prod)
 ## Deployment
 
 ```bash
-# Backend → Railway
-cd backend && railway up
+# Backend → Render
+# Deploy by connecting your GitHub repository in the Render dashboard.
 
 # Frontend → Vercel
 cd frontend && vercel --prod
